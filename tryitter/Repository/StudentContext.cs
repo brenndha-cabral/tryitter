@@ -14,7 +14,7 @@ namespace tryitter.Database
         {
             if (optionsBuilder is not null)
             {
-                var connectionString = "Server=127.0.0.1;Database=sql_server_db;User=SA;Password=Password12";
+                var connectionString = "Server=127.0.0.1;Database=sql_server_db;User=SA;Password=Password12;Encrypt=False";
 
                 if (connectionString is null )
                 {
