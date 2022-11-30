@@ -5,8 +5,9 @@ namespace tryitter.Interfaces
 {
     public interface IStudentRepository
     {
-        IEnumerable<StudentDTO> GetStudents();
-        StudentDTO GetStudentById(int id);
+        IEnumerable<StudentNameDTO> GetStudents();
+        StudentNameDTO GetStudentById(int id);
+        StudentNameDTO GetStudentByName(string name);
         StudentNameDTO CreateStudent(Student post);
         StudentNameDTO UpdateStudent(Student post, int studentId);
         void DeleteStudent(int id);

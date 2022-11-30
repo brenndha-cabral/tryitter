@@ -11,6 +11,7 @@ namespace tryitter.DTO
 
     public class StudentNameDTO
     {
+        public int StudentId { get; set; }
         public string? Name { get; set; }
     }
 }

@@ -14,38 +14,34 @@ namespace tryitter.Repository
             _context = context;
         }
 
-        public IEnumerable<StudentDTO> GetStudents()
+        public IEnumerable<StudentNameDTO> GetStudents()
         {
             return _context.Students
-                .Select(s => new StudentDTO
+                .Select(s => new StudentNameDTO
                 {
                     StudentId = s.StudentId,
-                    Name = s.Name,
-                    Posts = s.Posts!.Select(p => new PostDTO
-                    {
-                        Content = p.Content,
-                        Release = p.Release,
-                        PostId= p.PostId,
-                        StudentName = s.Name
-                    }).ToList()
-                });
+                    Name = s.Name
+                }).ToList();
         }
 
-        public StudentDTO GetStudentById(int id)
+        public StudentNameDTO GetStudentById(int id)
         {
             return _context.Students.Where(s => s.StudentId == id)
-                .Select(s => new StudentDTO
+                .Select(s => new StudentNameDTO
                 {
                     StudentId = s.StudentId,
-                    Name = s.Name,
-                    Posts = s.Posts!.Select(p => new PostDTO
-                    {
-                        Content = p.Content,
-                        Release = p.Release,
-                        PostId = p.PostId,
-                        StudentName = s.Name
-                    }).ToList()
-                }).First();
+                    Name = s.Name
+                }).FirstOrDefault();
+        }
+
+        public StudentNameDTO GetStudentByName(string name)
+        {
+            return _context.Students.Where(s => s.Name == name)
+                .Select(s => new StudentNameDTO
+                {
+                    StudentId = s.StudentId,
+                    Name = s.Name
+                }).FirstOrDefault();
         }
 
         public StudentNameDTO CreateStudent(Student student)
@@ -56,7 +52,6 @@ namespace tryitter.Repository
             return new StudentNameDTO
             {
                 Name = student.Name
-
             };
         }
 
@@ -64,15 +59,13 @@ namespace tryitter.Repository
         {
             var student = _context.Students.Find(studentId);
 
-            if (student is null)
-            {
-                throw new Exception("Student not found");
-            }
-
             student.Name = newStudent.Name;
             _context.SaveChanges();
 
-            return new StudentNameDTO { Name = newStudent.Name };
+            return new StudentNameDTO
+            {
+                Name = newStudent.Name
+            };
         }
 
         public void DeleteStudent(int studentId)
