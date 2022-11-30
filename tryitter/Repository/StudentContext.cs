@@ -14,7 +14,7 @@ namespace tryitter.Database
         {
             if (optionsBuilder is not null)
             {
-                var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings.Default");
+                var connectionString = "Server=127.0.0.1;Database=sql_server_db;User=SA;Password=Password12";
 
                 if (connectionString is null )
                 {

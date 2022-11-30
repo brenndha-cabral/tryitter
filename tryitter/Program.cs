@@ -1,15 +1,18 @@
+using tryitter.Database;
+using tryitter.Interfaces;
+using tryitter.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddDbContext<StudentContext>();
+builder.Services.AddScoped<IStudentsContext, StudentContext>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
