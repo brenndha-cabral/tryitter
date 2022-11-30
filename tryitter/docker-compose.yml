@@ -1,0 +1,13 @@
+﻿version: '3'
+
+services:
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql_server_db
+    ports:
+      - 1433:1433
+    environment:
+      - MSSQL_USER=sa
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Password12
