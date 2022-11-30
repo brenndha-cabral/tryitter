@@ -6,7 +6,7 @@ namespace tryitter.Models
     {
         [Key]
         public int StudentId { get; set; }
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public ICollection<Post>? Posts { get; set; }
     }
 }
