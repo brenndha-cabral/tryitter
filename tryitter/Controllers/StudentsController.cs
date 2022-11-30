@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using tryitter.Interfaces;
 
 namespace tryitter.Controllers
@@ -19,7 +20,8 @@ namespace tryitter.Controllers
         {
             var students = _studentRepository.GetStudents();
 
-            if (students is null)
+            //Assim consigo ver se esse array anulável está nulo ou vazio, se fosse para verificar se estivesse apenas vazio, seria !students.Any()
+            if (!(students?.Any() == true)) 
             {
                 return NotFound("Students not fount");
             }
