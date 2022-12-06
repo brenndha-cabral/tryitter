@@ -1,4 +1,5 @@
-﻿using tryitter.Database;
+﻿using Microsoft.EntityFrameworkCore;
+using tryitter.Database;
 using tryitter.DTO;
 using tryitter.Interfaces;
 using tryitter.Models;
@@ -7,46 +8,52 @@ namespace tryitter.Repository
 {
     public class StudentRepository : IStudentRepository
     {
-        protected readonly StudentContext _context;
+        protected readonly AplicationContext _context;
 
-        public StudentRepository(StudentContext context)
+        public StudentRepository(AplicationContext context)
         {
             _context = context;
         }
 
-        public IEnumerable<StudentNameDTO> GetStudents()
+        public async Task<IEnumerable<StudentNameDTO>> GetStudents()
         {
-            return _context.Students
+            var students = await _context.Students
                 .Select(s => new StudentNameDTO
                 {
                     StudentId = s.StudentId,
                     Name = s.Name
-                }).ToList();
+                }).ToListAsync();
+
+            return students;
         }
 
-        public StudentNameDTO GetStudentById(int id)
+        public async Task<StudentNameDTO> GetStudentById(int id)
         {
-            return _context.Students.Where(s => s.StudentId == id)
+            var student = await _context.Students.Where(s => s.StudentId == id)
                 .Select(s => new StudentNameDTO
                 {
                     StudentId = s.StudentId,
                     Name = s.Name
-                }).FirstOrDefault();
+                }).FirstOrDefaultAsync();
+
+            return student;
         }
 
-        public StudentNameDTO GetStudentByName(string name)
+        public async Task<StudentNameDTO> GetStudentByName(string name)
         {
-            return _context.Students.Where(s => s.Name == name)
+            var student = await _context.Students.Where(s => s.Name == name)
                 .Select(s => new StudentNameDTO
                 {
                     StudentId = s.StudentId,
                     Name = s.Name
-                }).FirstOrDefault();
+                }).FirstOrDefaultAsync();
+
+            return student;
         }
 
-        public StudentNameDTO CreateStudent(Student student)
+        public async Task<StudentNameDTO> CreateStudent(Student student)
         {
-            _context.Students.Add(student);
+            await _context.Students.AddAsync(student);
             _context.SaveChanges();
 
             return new StudentNameDTO
@@ -55,9 +62,9 @@ namespace tryitter.Repository
             };
         }
 
-        public StudentNameDTO UpdateStudent(Student newStudent, int studentId)
+        public async Task<StudentNameDTO> UpdateStudent(Student newStudent, int studentId)
         {
-            var student = _context.Students.Find(studentId);
+            var student = await _context.Students.FindAsync(studentId);
 
             student.Name = newStudent.Name;
             _context.SaveChanges();
