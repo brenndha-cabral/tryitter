@@ -3,7 +3,7 @@ using tryitter.Models;
 
 namespace tryitter.Interfaces
 {
-    public interface IStudentsContext
+    public interface IAplicationContext
     {
         public DbSet<Student> Students { get; set; }
         public DbSet<Post> Posts { get; set; }

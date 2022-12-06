@@ -10,7 +10,7 @@ using tryitter.Database;
 
 namespace tryitter.Migrations
 {
-    [DbContext(typeof(StudentContext))]
+    [DbContext(typeof(AplicationContext))]
     partial class StudentContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

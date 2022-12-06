@@ -11,7 +11,7 @@ using tryitter.Database;
 
 namespace tryitter.Migrations
 {
-    [DbContext(typeof(StudentContext))]
+    [DbContext(typeof(AplicationContext))]
     [Migration("20221130054805_CreateStudentsTable")]
     partial class CreateStudentsTable
     {

@@ -4,9 +4,9 @@ using tryitter.Models;
 
 namespace tryitter.Database
 {
-    public class StudentContext : DbContext, IStudentsContext
+    public class AplicationContext : DbContext, IAplicationContext
     {
-        public StudentContext(DbContextOptions<StudentContext> options) : base(options) {}
+        public AplicationContext(DbContextOptions<AplicationContext> options) : base(options) {}
         public DbSet<Student> Students { get; set; }
         public DbSet<Post> Posts { get; set; }
 
