@@ -7,7 +7,9 @@ namespace tryitter.DTO
     {
         public int PostId { get; set; }
         public string? Content { get; set; }
-        public DateTime Release { get; set; }
+        public string Published { get; set; }
+        public int Likes { get; set; }
+        public string? Comments { get; set; }
         public int StudentId { get; set; }
     }
 
@@ -15,5 +17,6 @@ namespace tryitter.DTO
     {
         public string? Content { get; set; }
         public int StudentId { get; set; }
+        public string Publised { get; set; } = DateTime.Now.ToString();
     }
 }

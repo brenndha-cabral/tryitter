@@ -22,7 +22,7 @@ namespace tryitter.Repository
                 {
                     PostId = s.PostId,
                     Content = s.Content,
-                    Release = s.Release,
+                    Published = s.Published,
                     StudentId = s.StudentId,
                 }).ToListAsync();
 
@@ -36,7 +36,7 @@ namespace tryitter.Repository
                 {
                     PostId = s.PostId,
                     Content = s.Content,
-                    Release = s.Release,
+                    Published = s.Published,
                     StudentId = s.StudentId,
                 }).FirstOrDefaultAsync();
 
@@ -59,7 +59,7 @@ namespace tryitter.Repository
             var post = await _context.Posts.FindAsync(posttId);
 
             post.Content = newPost.Content;
-            post.Release = newPost.Release;
+            post.Published = newPost.Published;
 
             _context.SaveChanges();
 

@@ -29,10 +29,37 @@ namespace tryitter.Controllers
             return Ok(students);
         }
 
+        [HttpGet("posts")]
+        public async Task<IActionResult> GetStudentsWithPosts()
+        {
+            var students = await _studentRepository.GetStudentsWithPosts();
+
+            //Assim consigo ver se esse array anulável está nulo ou vazio, se fosse para verificar se estivesse apenas vazio, seria !students.Any()
+            if (!(students?.Any() == true))
+            {
+                return NotFound("Students not fount");
+            }
+
+            return Ok(students);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetStudentById(int id)
         {
-            var student = _studentRepository.GetStudentById(id);
+            var student = await _studentRepository.GetStudentById(id);
+
+            if (student is null)
+            {
+                return NotFound("Student not fount");
+            }
+
+            return Ok(student);
+        }
+
+        [HttpGet("{id}/posts")]
+        public async Task<IActionResult> GetStudentByIdWithPost(int id)
+        {
+            var student = await _studentRepository.GetStudentByIdWithPost(id);
 
             if (student is null)
             {

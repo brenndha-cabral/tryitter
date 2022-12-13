@@ -27,6 +27,30 @@ namespace tryitter.Repository
             return students;
         }
 
+        public async Task<IEnumerable<StudentDTO>> GetStudentsWithPosts()
+        {
+            var students = await _context.Students
+                .Select(s => new StudentDTO
+                {
+                    StudentId = s.StudentId,
+                    Name = s.Name,
+                    Age= s.Age,
+                    Birthday= s.Birthday,
+                    Email= s.Email,
+                    Gender= s.Gender,
+                    Posts = s.Posts.Select(b => new PostDTO
+                    {
+                        PostId = b.PostId,
+                        Content= b.Content,
+                        Comments= b.Comments,
+                        Likes= b.Likes,
+                        Published= b.Published,
+                    }).ToList()
+                }).ToListAsync();
+
+            return students;
+        }
+
         public async Task<StudentNameDTO> GetStudentById(int id)
         {
             var student = await _context.Students.Where(s => s.StudentId == id)
@@ -34,6 +58,32 @@ namespace tryitter.Repository
                 {
                     StudentId = s.StudentId,
                     Name = s.Name
+                }).FirstOrDefaultAsync();
+
+            return student;
+        }
+
+        public async Task<StudentDTO> GetStudentByIdWithPost(int id)
+        {
+
+            var student = await _context.Students
+                .Where(x => x.StudentId == id)
+                .Select(s => new StudentDTO
+                {
+                    StudentId = s.StudentId,
+                    Name = s.Name,
+                    Age = s.Age,
+                    Birthday = s.Birthday,
+                    Email = s.Email,
+                    Gender = s.Gender,
+                    Posts = s.Posts.Select(b => new PostDTO
+                    {
+                        PostId = b.PostId,
+                        Content = b.Content,
+                        Comments = b.Comments,
+                        Likes = b.Likes,
+                        Published = b.Published,
+                    }).ToList()
                 }).FirstOrDefaultAsync();
 
             return student;
@@ -51,6 +101,13 @@ namespace tryitter.Repository
             return student;
         }
 
+        public async Task<string> GetStudentByEmail(string email)
+        {
+            var student = await _context.Students.Where(s => s.Email == email)
+                .Select(s => s.Email).FirstOrDefaultAsync();
+
+            return student;
+        }
         public async Task<StudentNameDTO> CreateStudent(Student student)
         {
             await _context.Students.AddAsync(student);
