@@ -88,6 +88,8 @@ Esta aplicação tem como objetivo gerenciar uma rede social  :iphone:
 
 - `dotnet restore`: Irá instalar os pacotes NuGets;
 
+- `dotnet ef database update`: Irá criar o banco de dados localmente;
+
 - `dotnet run`: Irá rodar a aplicação;
 
 - `dotnet test`: Irá rodar todos os testes de integração da aplicação;
