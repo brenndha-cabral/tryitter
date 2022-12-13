@@ -12,7 +12,7 @@ namespace tryitter.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (optionsBuilder is not null)
+            if (!optionsBuilder.IsConfigured)
             {
                 var connectionString = "Server=127.0.0.1;Database=sql_server_db;User=SA;Password=Password12;Encrypt=False";
 

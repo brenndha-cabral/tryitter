@@ -12,11 +12,4 @@ namespace tryitter.DTO
         public string? Comments { get; set; }
         public int StudentId { get; set; }
     }
-
-    public class PostInsert
-    {
-        public string? Content { get; set; }
-        public int StudentId { get; set; }
-        public string Publised { get; set; } = DateTime.Now.ToString();
-    }
 }
