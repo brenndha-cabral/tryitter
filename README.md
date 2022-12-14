@@ -104,9 +104,10 @@ Esta aplicação tem como objetivo gerenciar uma rede social  :iphone:
 
 <summary id="env"><strong>🧪 Foram realizados testes de integração para atingir a cobertura mínima de 30%</strong></summary><br/>
 
-> Foram realizados testes de unidade e de integração com `xUnit` e `Fluent Assertions`.
+> Foram realizados testes de integração com `xUnit` e `Fluent Assertions`.
 <div align="center">
-    <img src="./public/assets/images/tests.jpeg" alt="Relatório de cobertura de testes" width="1000">
+    <img src="./public/assets/images/tests-coverage.png" alt="Relatório de cobertura de testes" width="1000">
+    <img src="./public/assets/images/tests.png" alt="Relatório de cobertura de testes" width="1000">
 </div>
 
 </details>
