@@ -46,6 +46,8 @@ Esta aplicação tem como objetivo gerenciar uma rede social  :iphone:
 > Faça um clone deste repositório:
 - `git@github.com:brenndha-cabral/tryitter.git` 
 
+> Navegue até a pasta do projeto `tryitter.csproj` e rode o script `dotnet run`
+
 > Após rodar a aplicação, você deverá acessar através de:
 - `https://localhost:7136/swagger/index.html` 
 
@@ -54,8 +56,17 @@ Esta aplicação tem como objetivo gerenciar uma rede social  :iphone:
 
 
 <h2 id="documentacao">Documentação</h2>
+<details>
 
-> :information_source: É necessário rodar a aplicação localmente para que abra o Swagger com os endpoints e orientações.
+<summary id="env"><strong>:pencil: Clique aqui e tenha uma pré visualização da API</strong></summary><br/>
+
+<div align="center">
+    <img src="./public/assets/images/swagger.png" alt="Swagger" width="1000">
+</div>
+
+</details>
+
+> :information_source: É necessário possuir o `dotnet` instalado para rodar a aplicação localmente e abrir o Swagger com os endpoints e orientações.
 
 > Caso não tenha conhecimento em Swagger, clique [aqui](https://www.youtube.com/watch?v=cOhguRdlr5A) e veja como é fácil utilizar.
 
@@ -63,7 +74,7 @@ Esta aplicação tem como objetivo gerenciar uma rede social  :iphone:
  
  - Para que a as rotas sejam consumidas, é necessário que a pessoa usuária faça login.
 
- - Para fazer login, clique em `Try it out` e com as credenciais padrões e em seguida clique em `execute`, a aplicação retornará um token.
+ - Para fazer login, clique em `Try it out` e com as credenciais de uma pessoa estudante (crie uma na rota `POST /students` previamente) e em seguida clique em `execute`, a aplicação retornará um token.
 
  - Após o login, o token retornado deve ser inserido em `Authorize` e isso fará com que haja a autenticação e autorização para todas as rotas.
 
