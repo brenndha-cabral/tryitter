@@ -1,7 +1,7 @@
 # Projeto Tryitter :bird:
 
 <div align="center">
- Inserir um banner legal ou somente retirar essa div
+   <img src="./public/assets/images/readme-banner.png" alt="" width="1000">
 </div>
 
 <h2>Índice</h2>
@@ -22,8 +22,6 @@ Esta aplicação tem como objetivo gerenciar uma rede social  :iphone:
 
  - Esta é uma aplicação em `.NET` com `Entity Framework` fazer um CRUD de contas e posts. Infelizmente não foi possível realizar o deploy na `Azure`, consulte a seção [documentação](#documentacao) para entender melhor.
  - Esta aplicação seguiu os princípios do REST e se conecta ao banco de dados `MySQL Server`.
- - Para acessar a API, é necessário que a pessoa usuária faça login com suas credencias e isso será autenticado e autorizado via JWT com a geração de token.
- - É possível também que a pessoa usuária possa se cadastrar e utilizar a API, a partir disso é gerado um token para acesso a API.
 
 <h2 id="tecnologias">Tecnologias</h2>
 
@@ -68,13 +66,9 @@ Esta aplicação tem como objetivo gerenciar uma rede social  :iphone:
 
 ### 👉 Com Docker
 
-> :information_source: Rode os serviços `asp` e `db` com o comando `docker-compose up`.
-- Esse comando irá inicializar os containers chamados `tryitter` e `sql_server_dbb`;
+> :information_source: Rode o serviço `db` com o comando `docker-compose up`.
 
-- A partir daqui você pode acessar o container `tryitter` via CLI ou abri-lo no seu editor;
-
-> :information_source: Use o comando `docker exec -it tryitter sh`.
-- Ele te dará acesso ao terminal interativo do container criado pelo docker-compose.
+- Esse comando irá inicializar um container chamado `sql_server_db`;
 
 > :information_source: Ao rodar o docker-compose, ele criará uma imagem do banco de dados `MySQL Server`. 
 
