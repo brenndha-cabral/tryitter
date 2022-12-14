@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using tryitter.Interfaces;
 using tryitter.Models;
 
@@ -15,12 +17,12 @@ namespace tryitter.Controllers
             _studentRepository = studentRepository;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetStudents()
         {
             var students = await _studentRepository.GetStudents();
 
-            //Assim consigo ver se esse array anulável está nulo ou vazio, se fosse para verificar se estivesse apenas vazio, seria !students.Any()
             if (!(students?.Any() == true))
             {
                 return NotFound("Students not fount");
@@ -29,6 +31,7 @@ namespace tryitter.Controllers
             return Ok(students);
         }
 
+        [Authorize]
         [HttpGet("posts")]
         public async Task<IActionResult> GetStudentsWithPosts()
         {
@@ -43,6 +46,7 @@ namespace tryitter.Controllers
             return Ok(students);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetStudentById(int id)
         {
@@ -56,6 +60,7 @@ namespace tryitter.Controllers
             return Ok(student);
         }
 
+        [Authorize]
         [HttpGet("{id}/posts")]
         public async Task<IActionResult> GetStudentByIdWithPost(int id)
         {
@@ -69,6 +74,7 @@ namespace tryitter.Controllers
             return Ok(student);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> CreateStudent([FromBody] Student student)
         {
@@ -84,9 +90,18 @@ namespace tryitter.Controllers
             return Created("", $"{newStudent.Name} registered successfully!");
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateStudent([FromBody] Student student, int id)
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var getClaim = identity.FindFirst("Id").Value;
+
+            if (Convert.ToInt32(getClaim) != id)
+            {
+                return Unauthorized("Student logged in does not match the one sought for updating. Unable to update.");
+            }
+
             var studentById = await _studentRepository.GetStudentById(id);
 
             if (studentById is null)
@@ -99,9 +114,18 @@ namespace tryitter.Controllers
             return Ok($"{updateStudent.Name} successfully updated!");
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteStudent(int id)
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var getClaim = identity.FindFirst("Id").Value;
+
+            if (Convert.ToInt32(getClaim) != id)
+            {
+                return Unauthorized("Student logged in does not match the one sought for removal. Unable to remove.");
+            }
+
             var studentById = await _studentRepository.GetStudentById(id);
 
             if (studentById is null)

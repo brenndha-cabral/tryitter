@@ -10,6 +10,7 @@ namespace tryitter.Models
         [JsonIgnore]
         public int PostId { get; set; }
 
+        [Required(ErrorMessage = "Content is required.")]
         [StringLength(
             300,
             ErrorMessage = "The post must have a maximum of 300 characters")]
@@ -27,6 +28,7 @@ namespace tryitter.Models
             ErrorMessage = "The comment must have a maximum of 100 characters")]
         public string? Comments { get; set; }
 
+        [Required(ErrorMessage = "StudentId is required.")]
         [ForeignKey("StudentId")]
         public int StudentId { get; set; }
 

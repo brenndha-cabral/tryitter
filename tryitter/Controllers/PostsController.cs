@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using tryitter.Interfaces;
 using tryitter.Models;
 
@@ -15,12 +17,12 @@ namespace tryitter.Controllers
             _postRepository = postRepository;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetPosts()
         {
             var posts = await _postRepository.GetPosts();
 
-            //Assim consigo ver se esse array anulável está nulo ou vazio, se fosse para verificar se estivesse apenas vazio, seria !posts.Any()
             if (!(posts?.Any() == true))
             {
                 return NotFound("Posts not fount");
@@ -29,6 +31,7 @@ namespace tryitter.Controllers
             return Ok(posts);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPostById(int id)
         {
@@ -42,6 +45,7 @@ namespace tryitter.Controllers
             return Ok(student);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreatePost([FromBody] Post post)
         {
@@ -50,9 +54,18 @@ namespace tryitter.Controllers
             return Created("", "Post registered successfully!");
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdatePost([FromBody] Post post, int id)
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var getClaim = identity.FindFirst("Id").Value;
+
+            if (Convert.ToInt32(getClaim) != id)
+            {
+                return Unauthorized("Student logged in does not match the one sought for updating");
+            }
+
             var postById = await _postRepository.GetPostById(id);
 
             if (postById is null)
@@ -65,9 +78,18 @@ namespace tryitter.Controllers
             return Ok("Post successfully updated!");
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteStudent(int id)
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var getClaim = identity.FindFirst("Id").Value;
+
+            if (Convert.ToInt32(getClaim) != id)
+            {
+                return Unauthorized("Logged in student does not match the student who made the post. Unable to remove.");
+            }
+
             var postById = await _postRepository.GetPostById(id);
 
             if (postById is null)
