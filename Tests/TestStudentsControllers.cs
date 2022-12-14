@@ -104,7 +104,7 @@ namespace tests
         public async Task DeleteStudentTest_Return_NoContent()
         {
             var client = _applicationFactory.CreateClient();
-            var response = await client.DeleteAsync("/students/4");
+            var response = await client.DeleteAsync("/students/3");
 
             response.StatusCode.Should().Be(HttpStatusCode.NoContent);
         }

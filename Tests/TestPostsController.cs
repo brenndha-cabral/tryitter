@@ -37,7 +37,7 @@ namespace tests
         public async Task GetPostByIdTest_Return_Ok()
         {
             var client = _applicationFactory.CreateClient();
-            var response = await client.GetAsync("/posts/1004");
+            var response = await client.GetAsync("/posts/1");
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
@@ -67,7 +67,7 @@ namespace tests
             };
 
             var client = _applicationFactory.CreateClient();
-            using HttpResponseMessage response = await client.PutAsJsonAsync("/post/1004", posts);
+            using HttpResponseMessage response = await client.PutAsJsonAsync("/post/4", posts);
 
             response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
@@ -76,7 +76,7 @@ namespace tests
         public async Task DeletePostTest_Return_NoContent()
         {
             var client = _applicationFactory.CreateClient();
-            var response = await client.DeleteAsync("/posts/1005");
+            var response = await client.DeleteAsync("/posts/2");
 
             response.StatusCode.Should().Be(HttpStatusCode.NoContent);
         }
