@@ -14,7 +14,11 @@ namespace tryitter.Models
 
         [Required(ErrorMessage = "Age is required.")]
         public int Age { get; set; }
+
+        [Required(ErrorMessage = "Birthday is required.")]
         public string? Birthday { get; set; } = null;
+
+        [Required(ErrorMessage = "Gender is required.")]
         public string? Gender { get; set; } = null;
 
         [Required(ErrorMessage = "Email is required.")]

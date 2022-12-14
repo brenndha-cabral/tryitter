@@ -49,6 +49,14 @@ namespace tryitter.Controllers
         [HttpPost]
         public async Task<IActionResult> CreatePost([FromBody] Post post)
         {
+            var identity = HttpContext.User.Identity as ClaimsIdentity;
+            var getClaim = identity.FindFirst("Id").Value;
+
+            if (Convert.ToInt32(getClaim) != post.StudentId)
+            {
+                return Unauthorized("Student logged in does not match the StudentId entered in the post.");
+            }
+
             await _postRepository.CreatePost(post);
 
             return Created("", "Post registered successfully!");
@@ -63,7 +71,7 @@ namespace tryitter.Controllers
 
             if (Convert.ToInt32(getClaim) != id)
             {
-                return Unauthorized("Student logged in does not match the one sought for updating");
+                return Unauthorized("Student logged in does not match the one sought for updating. Unable to updated.");
             }
 
             var postById = await _postRepository.GetPostById(id);
