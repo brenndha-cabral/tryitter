@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace tryitter.Models
 {
     public class Student
     {
         [Key]
+        [JsonIgnore]
         public int StudentId { get; set; }
 
         [Required(ErrorMessage = "Name is required.")]
@@ -34,6 +36,8 @@ namespace tryitter.Models
         [DataType(DataType.Password)]
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
+
+        [JsonIgnore]
         public ICollection<Post>? Posts { get; set; }
     }
 }
