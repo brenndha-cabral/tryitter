@@ -46,7 +46,7 @@ Esta aplicação tem como objetivo gerenciar uma rede social  :iphone:
 > Faça um clone deste repositório:
 - `git@github.com:brenndha-cabral/tryitter.git` 
 
-> Navegue até a pasta do projeto `tryitter.csproj` e rode o script `dotnet run`
+> Navegue até a pasta do projeto `tryitter.csproj` e rode os scripts `dotnet restore` e `dotnet run` (lembrando que o docker-compose já deve estar iniciado).
 
 > Após rodar a aplicação, você deverá acessar através de:
 - `https://localhost:7136/swagger/index.html` 
@@ -66,7 +66,7 @@ Esta aplicação tem como objetivo gerenciar uma rede social  :iphone:
 
 </details>
 
-> :information_source: É necessário possuir o `dotnet` instalado para rodar a aplicação localmente e abrir o Swagger com os endpoints e orientações.
+> :information_source: É necessário possuir `dotnet`, `docker` e `docker-compose` instalados para rodar a aplicação localmente e abrir o Swagger com os endpoints e orientações.
 
 > Caso não tenha conhecimento em Swagger, clique [aqui](https://www.youtube.com/watch?v=cOhguRdlr5A) e veja como é fácil utilizar.
 
