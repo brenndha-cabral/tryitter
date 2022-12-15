@@ -137,7 +137,7 @@ Esta aplicação tem como objetivo gerenciar uma rede social  :iphone:
 <summary id="env"><strong>:chart_with_upwards_trend: Students | Posts</strong></summary><br/>
 
   <div align="center">
-    <img src="./public/assets/images/der.png" alt="Diagrama Entidade Relacionamento" width="1000">
+    <img src="./public/assets/images/der-png.png" alt="Diagrama Entidade Relacionamento" width="1000">
   </div>
 
 </details>
