@@ -66,7 +66,7 @@ Esta aplicação tem como objetivo gerenciar uma rede social  :iphone:
 
 </details>
 
-> :information_source: É necessário possuir `dotnet`, `docker` e `docker-compose` instalados para rodar a aplicação localmente e abrir o Swagger com os endpoints e orientações.
+> :information_source: É necessário possuir `dotnet`, `dotnet ef`, `docker` e `docker-compose` instalados para rodar a aplicação localmente e abrir o Swagger com os endpoints e orientações.
 
 > Caso não tenha conhecimento em Swagger, clique [aqui](https://www.youtube.com/watch?v=cOhguRdlr5A) e veja como é fácil utilizar.
 
