@@ -58,10 +58,12 @@ Esta aplicação tem como objetivo gerenciar uma rede social  :iphone:
 <h2 id="documentacao">Documentação</h2>
 <details>
 
-<summary id="env"><strong>:pencil: Clique aqui e tenha uma pré visualização da API</strong></summary><br/>
+<summary id="env"><strong>:pencil: Clique aqui e veja a aplicação rodando</strong></summary><br/>
+
+https://user-images.githubusercontent.com/87787342/207760277-6b73e70b-af10-4681-ad4c-62374b3366e2.mp4
 
 <div align="center">
-    <img src="./public/assets/images/swagger.png" alt="Swagger" width="1000">
+    <img src="./public/assets/images/swagger.png" alt="Swagger" width="1000">    
 </div>
 
 </details>
