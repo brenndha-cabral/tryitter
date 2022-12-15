@@ -46,7 +46,7 @@ Esta aplicação tem como objetivo gerenciar uma rede social  :iphone:
 > Faça um clone deste repositório:
 - `git@github.com:brenndha-cabral/tryitter.git` 
 
-> Navegue até a pasta do projeto `tryitter.csproj` e rode os scripts `dotnet restore` e `dotnet run` (lembrando que o docker-compose já deve estar iniciado).
+> Navegue até a pasta do projeto `tryitter.csproj` e rode os scripts `dotnet restore`, `dotnet ef database update` e `dotnet run` (lembrando que o docker-compose já deve estar iniciado).
 
 > Após rodar a aplicação, você deverá acessar através de:
 - `https://localhost:7136/swagger/index.html` 
