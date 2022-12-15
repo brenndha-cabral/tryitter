@@ -20,7 +20,7 @@
 
 Esta aplicação tem como objetivo gerenciar uma rede social  :iphone:
 
- - Esta é uma aplicação em `.NET` com `Entity Framework` fazer um CRUD de contas e posts. Infelizmente não foi possível realizar o deploy na `Azure`, consulte a seção [documentação](#documentacao) para entender melhor.
+ - Esta é uma aplicação em `.NET` com `Entity Framework` que realiza um CRUD de contas e posts. Infelizmente não foi possível realizar o deploy na `Azure`, consulte a seção [documentação](#documentacao) para entender melhor.
  - Esta aplicação seguiu os princípios do REST e se conecta ao banco de dados `MySQL Server`.
  - Para acessar a API, é necessário que a pessoa usuária faça login com suas credencias e isso será autenticado e autorizado via JWT com a geração de token.
  - É possível também que a pessoa usuária possa se cadastrar e utilizar a API, a partir disso é gerado um token para acesso a API.
@@ -124,7 +124,7 @@ https://user-images.githubusercontent.com/87787342/207760277-6b73e70b-af10-4681-
 
 <summary id="env"><strong>🧪 Foram realizados testes de integração para atingir a cobertura mínima de 30%</strong></summary><br/>
 
-> Foram realizados testes de integração com `xUnit` e `Fluent Assertions`. Não consegui fazer o mock do banco de dados, por isso os testes foram realizados em cima do bando de dados de desenvolvimento.
+> Foram realizados testes de integração com `xUnit` e `Fluent Assertions`. Não consegui fazer o mock do banco de dados, por isso os testes foram realizados em cima do banco de dados de desenvolvimento.
 <div align="center">
     <img src="./public/assets/images/tests-coverage.png" alt="Relatório de cobertura de testes" width="1000">
     <img src="./public/assets/images/tests.png" alt="Relatório de cobertura de testes" width="1000">
